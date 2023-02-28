@@ -41,7 +41,7 @@ class PlayerInputs
         end
 
         # While the current value has already been taken
-        while GameLogic.check_for_previous_input(board, input) == true
+        while GameLogic.check_for_previous_input(board, input)
             puts 'Please enter a value that has not been previously taken'
             input = gets.chomp!
             input = input.to_i
@@ -77,7 +77,7 @@ class PlayerInputs
         end
 
         # While the current value has already been taken
-        while GameLogic.check_for_previous_input(board, input) == true
+        while GameLogic.check_for_previous_input(board, input)
             puts 'Please enter a value that has not been previously taken'
             input = gets.chomp!
             input = input.to_i
@@ -140,48 +140,64 @@ class GameLogic
         # Logic for all rows first: Starting with player X
         if @board[0] == 'X' && @board[1] == 'X' && @board[2] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
         elsif @board[3] == 'X' && @board[4] == 'X' && @board[5] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
         elsif @board[6] == 'X' && @board[7] == 'X' && @board[8] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
 
         # Logic for all the columns:    
         elsif @board[0] == 'X' && @board[3] == 'X' && @board[6] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
         elsif @board[1] == 'X' && @board[4] == 'X' && @board[7] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
         elsif @board[2] == 'X' && @board[5] == 'X' && @board[8] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
 
         # Logic for all the diagonals   
         elsif @board[0] == 'X' && @board[4] == 'X' && @board[8] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
         elsif @board[2] == 'X' && @board[4] == 'X' && @board[6] == 'X'
             puts "Player X has won the game!"
+            InitializeGame.new
         end
 
 
         # Logic for all rows first: For player Y
         if @board[0] == 'Y' && @board[1] == 'Y' && @board[2] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
         elsif @board[3] == 'Y' && @board[4] == 'Y' && @board[5] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
         elsif @board[6] == 'Y' && @board[7] == 'Y' && @board[8] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
 
         # Logic for all the columns:    
         elsif @board[0] == 'Y' && @board[3] == 'Y' && @board[6] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
         elsif @board[1] == 'Y' && @board[4] == 'Y' && @board[7] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
         elsif @board[2] == 'Y' && @board[5] == 'Y' && @board[8] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
 
         # Logic for all the diagonals   
         elsif @board[0] == 'Y' && @board[4] == 'Y' && @board[8] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
         elsif @board[2] == 'Y' && @board[4] == 'Y' && @board[6] == 'Y'
             puts "Player Y has won the game!"
+            InitializeGame.new
         end
 
 
@@ -203,15 +219,31 @@ class GameLogic
 
 end
 
-# Welcome message to the user. Explains rules:
-puts "\nWelcome to Tic Tac Toe. This is a 2 player game, player 1 starts with X and player 2 starts with Y. Please enter a value between 1 and 9 to update the board."
-puts "=================="
 
-# Create an array that is numbered from 1 to 9:
-board = Array.new(9) { |i| i + 1 }
+# Call this class to create a new instance of the game
+class InitializeGame
+    def initialize()
+        # Welcome message to the user. Explains rules:
+        puts "\n+------------------------------------+"
+        puts "Welcome to Tic Tac Toe. This is a 2 player game, player 1 starts with X and player 2 starts with Y."
+        puts "Please enter a value between 1 and 9 to update the board."
+        puts "+------------------------------------+"
 
-# Create a new BoardCreation object that will populate the current board.
-BoardCreation.new(board)
+        # Create an array that is numbered from 1 to 9:
+        board = Array.new(9) { |i| i + 1 }
 
-# Begin the game
-BeginGame.new(board)
+        # Create a new BoardCreation object that will populate the current board.
+        BoardCreation.new(board)
+
+        # Begin the game
+        BeginGame.new(board)
+
+    end
+
+end
+
+# Start the game:
+InitializeGame.new
+
+
+
