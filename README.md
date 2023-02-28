@@ -9,4 +9,4 @@ Game made utilizing Ruby
 
 [How to Run]
 ------------------------------------------------------------
-Replit Link: 
+Replit Link: https://replit.com/@Inderdeepkloti1/Tic-Tac-Toe
